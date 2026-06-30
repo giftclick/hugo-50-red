@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de pases - Mario Hugo 50 años</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,800&display=swap">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg-0: #0c0d10;
+      --bg-1: #15181d;
+      --surface: rgba(255, 255, 255, 0.06);
+      --surface-strong: rgba(255, 255, 255, 0.1);
+      --line: rgba(255, 255, 255, 0.12);
+      --text: #f5f6f7;
+      --muted: #c1c6cd;
+      --muted-2: #8c9198;
+      --accent: #e1e4e8;
+      --shadow: 0 28px 90px rgba(0, 0, 0, 0.34);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 24px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 42%),
+        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-0) 100%);
+      color: var(--text);
+      font-family: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 24px 24px;
+      opacity: 0.3;
+      mix-blend-mode: soft-light;
+    }
+
+    .card {
+      width: min(100%, 640px);
+      padding: clamp(22px, 5vw, 34px);
+      border-radius: 30px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      position: relative;
+      z-index: 1;
+    }
+
+    h1, h2, strong {
+      font-family: "Fraunces", serif;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1;
+    }
+
+    p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    label {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    input {
+      min-height: 48px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 0 14px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      font: inherit;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: rgba(255, 255, 255, 0.28);
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.07);
+    }
+
+    .preview {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+    }
+
+    .preview small {
+      display: block;
+      color: var(--muted-2);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .preview strong {
+      display: block;
+      margin: 8px 0 6px;
+      font-size: clamp(1.5rem, 4vw, 2.1rem);
+      color: var(--text);
+    }
+
+    .preview span {
+      display: block;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    button {
+      min-height: 48px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      padding: 0 18px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.08));
+      color: var(--text);
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      font: inherit;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .result {
+      display: none;
+      margin-top: 22px;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      word-break: break-all;
+    }
+
+    .result a {
+      display: block;
+      margin-top: 8px;
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .result a:hover {
+      text-decoration: underline;
+    }
+
+    .meta {
+      margin-top: 14px;
+      color: var(--muted-2);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 520px) {
+      body {
+        padding: 16px;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Generador de pases</h1>
+    <p>Escribe el nombre del invitado y la cantidad de pases. El enlace generado abre la portada con el pase personalizado y respeta el paso a la invitación completa.</p>
+
+    <label>
+      Nombres
+      <input id="firstName" autocomplete="given-name" placeholder="Ej. Mario">
+    </label>
+
+    <label>
+      Apellidos
+      <input id="lastName" autocomplete="family-name" placeholder="Ej. Hugo">
+    </label>
+
+    <label>
+      Número de pases
+      <input id="numPasses" type="number" min="1" max="999" value="1">
+    </label>
+
+    <div class="preview">
+      <small id="preview-passes-title">Pase</small>
+      <strong id="preview-name">Nombre del invitado</strong>
+      <span id="preview-number">1</span>
+      <span id="preview-places-text">Lugar por confirmar</span>
+    </div>
+
+    <div class="actions">
+      <button id="generateButton" type="button">Generar enlace</button>
+      <button id="copyButton" type="button">Copiar enlace</button>
+    </div>
+
+    <div id="resultContainer" class="result">
+      Enlace generado:
+      <a id="generatedLink" href="index.html">index.html</a>
+    </div>
+
+    <div class="meta">La vista previa usa la misma ruta de dos partes: primero <strong>index.html</strong> y luego <strong>home.html</strong>.</div>
+  </main>
+
+  <script>
+    const targetPage = "index.html";
+    const firstNameInput = document.getElementById('firstName');
+    const lastNameInput = document.getElementById('lastName');
+    const passesInput = document.getElementById('numPasses');
+    const generatedLink = document.getElementById('generatedLink');
+    const resultContainer = document.getElementById('resultContainer');
+
+    function normalizePassCount(value) {
+      const parsed = Number.parseInt(String(value || ''), 10);
+      return Number.isFinite(parsed) && parsed > 0 ? Math.min(parsed, 999) : 1;
+    }
+
+    function updatePreview() {
+      const firstName = firstNameInput.value.trim();
+      const lastName = lastNameInput.value.trim();
+      const passes = normalizePassCount(passesInput.value);
+      const fullName = [firstName, lastName].filter(Boolean).join(' ') || 'Nombre del invitado';
+      document.getElementById('preview-name').textContent = fullName;
+      document.getElementById('preview-number').textContent = String(passes);
+      document.getElementById('preview-passes-title').textContent = passes === 1 ? 'Pase' : 'Pases';
+      document.getElementById('preview-places-text').textContent = passes === 1 ? 'Lugar por confirmar' : 'Lugares por confirmar';
+    }
+
+    function buildLink() {
+      const firstName = firstNameInput.value.trim();
+      const lastName = lastNameInput.value.trim();
+      const passes = normalizePassCount(passesInput.value);
+      if (!firstName || !lastName) {
+        alert('Por favor, completa nombres, apellidos y número de pases.');
+        return '';
+      }
+      const url = new URL(targetPage, window.location.href);
+      url.searchParams.set('guest', [firstName, lastName].join(' '));
+      url.searchParams.set('passes', String(passes));
+      return url.href;
+    }
+
+    [firstNameInput, lastNameInput, passesInput].forEach((input) => {
+      input.addEventListener('input', updatePreview);
+    });
+
+    document.getElementById('generateButton').addEventListener('click', () => {
+      const link = buildLink();
+      if (!link) return;
+      generatedLink.href = link;
+      generatedLink.textContent = link;
+      resultContainer.style.display = 'block';
+      updatePreview();
+    });
+
+    document.getElementById('copyButton').addEventListener('click', async () => {
+      const link = generatedLink.href && resultContainer.style.display === 'block'
+        ? generatedLink.href
+        : buildLink();
+      if (!link) return;
+      generatedLink.href = link;
+      generatedLink.textContent = link;
+      resultContainer.style.display = 'block';
+      try {
+        await navigator.clipboard.writeText(link);
+        alert('Enlace copiado');
+      } catch {
+        prompt('Copia el enlace:', link);
+      }
+    });
+
+    updatePreview();
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 150" role="img" aria-labelledby="title desc">
+  <title id="title">50</title>
+  <desc id="desc">Numero 50 en dorado para invitacion de cumpleanos.</desc>
+  <defs>
+    <linearGradient id="goldFill" x1="18%" y1="0%" x2="86%" y2="100%">
+      <stop offset="0%" stop-color="#fff4bf"/>
+      <stop offset="28%" stop-color="#f4d87a"/>
+      <stop offset="52%" stop-color="#d4af37"/>
+      <stop offset="76%" stop-color="#8f6715"/>
+      <stop offset="100%" stop-color="#ffe99b"/>
+    </linearGradient>
+    <linearGradient id="goldStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff8d1"/>
+      <stop offset="100%" stop-color="#b7851d"/>
+    </linearGradient>
+    <filter id="goldShadow" x="-25%" y="-35%" width="150%" height="170%">
+      <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#000000" flood-opacity="0.38"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#d4af37" flood-opacity="0.34"/>
+    </filter>
+  </defs>
+  <text x="120" y="112" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="126" font-weight="700" letter-spacing="-10" fill="url(#goldFill)" stroke="url(#goldStroke)" stroke-width="2.6" filter="url(#goldShadow)">50</text>
+</svg>
