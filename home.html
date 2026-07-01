@@ -121,7 +121,8 @@
       </section>
 
       <section class="resource-card card">
-        <p class="resource-copy highlighted-message">Tu presencia es muy importante para mí. Por favor toca el botón para confirmar tu
+        <p class="resource-copy highlighted-message">Tu presencia es muy importante para mí. Por favor toca el botón
+          para confirmar tu
           asistencia.</p>
         <div class="button-row">
           <a class="button"
@@ -139,7 +140,8 @@
       <section class="resource-card card">
         <p class="section-label"><i class="fas fa-map-marker-alt section-icon" aria-hidden="true"></i><span
             class="bold2">Ubicación</span></p>
-        <p class="resource-copy highlighted-message">La celebración será en Av. Trapiche 1085, Comas. Toca el botón para abrir el mapa.</p>
+        <p class="resource-copy highlighted-message">La celebración será en Av. Trapiche 1085, Comas. Toca el botón para
+          abrir el mapa.</p>
         <div class="button-row">
           <a class="ghost-button" href="https://maps.app.goo.gl/6xxTL3tBpxi11DMV6" target="_blank"
             rel="noreferrer">Tocar para ver mapa</a>
@@ -153,7 +155,8 @@
       </section>
 
       <section class="resource-card card">
-        <p class="resource-copy highlighted-message">Las fotos y videos de esta noche formaran parte de nuestro recuerdo.</p>
+        <p class="resource-copy highlighted-message">Las fotos y videos de esta noche formaran parte de nuestro
+          recuerdo.</p>
         <div class="button-row">
           <a class="button"
             href="https://drive.google.com/drive/folders/1wQ8Cn0kg6gLDXGYaSK5YND0G4Y7XXyLX?usp=drive_link"
@@ -183,6 +186,119 @@
         <h2 class="closing-title">Tu presencia será mi mejor regalo; cualquier detalle lo recibiré con cariño.
         </h2>
       </section>
+
+      <div class="dress-code-shell hero-span-2" aria-label="Dress code">
+        <div class="dress-code-panel">
+          <style>
+            body.invitation-page .dress-code-shell {
+              width: 100%;
+              min-width: 0;
+            }
+
+            body.invitation-page .dress-code-panel {
+              position: relative;
+              overflow: hidden;
+              display: grid;
+              justify-items: center;
+              gap: clamp(22px, 5vw, 36px);
+              width: 100%;
+              padding: clamp(34px, 8vw, 54px) clamp(18px, 5vw, 44px);
+              text-align: center;
+              color: #2e2d2b;
+              background:
+                radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.72), transparent 44%),
+                linear-gradient(180deg, rgba(246, 243, 238, 0.98), rgba(232, 228, 222, 0.98));
+              border: 1px solid rgba(212, 175, 55, 0.32);
+              border-radius: var(--inv-radius-xl);
+              box-shadow: 0 24px 62px rgba(39, 32, 19, 0.18), inset 0 0 0 1px rgba(255, 255, 255, 0.72);
+            }
+
+            body.invitation-page .dress-code-panel::before {
+              content: "";
+              position: absolute;
+              inset: 13px;
+              border: 1px solid rgba(212, 175, 55, 0.18);
+              border-radius: 24px;
+              pointer-events: none;
+            }
+
+            body.invitation-page .dress-code-panel>* {
+              position: relative;
+              z-index: 1;
+            }
+
+            body.invitation-page .dress-code-title {
+              margin: 0;
+              color: #282725;
+              font-family: var(--inv-font-script);
+              font-size: clamp(3.45rem, 13.5vw, 5.45rem);
+              font-weight: 500;
+              line-height: 0.95;
+              letter-spacing: 0.03em;
+            }
+
+            body.invitation-page .dress-code-formal {
+              margin: 0;
+              color: #2d2c2a;
+              font-family: var(--inv-font-serif);
+              font-size: clamp(2.05rem, 6.8vw, 2.95rem);
+              font-weight: 600;
+              line-height: 1.05;
+            }
+
+            body.invitation-page .dress-code-options {
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              gap: clamp(16px, 6vw, 48px);
+              width: 100%;
+              max-width: 640px;
+              color: #2d2c2a;
+              font-family: var(--inv-font-serif);
+              font-size: clamp(1.38rem, 4.9vw, 2.22rem);
+              font-weight: 700;
+              line-height: 1.12;
+            }
+
+            body.invitation-page .dress-code-icon-crop {
+              position: relative;
+              overflow: hidden;
+              width: 100px;
+              height: 121px;
+            }
+
+            body.invitation-page .dress-code-icon-crop img {
+              position: absolute;
+              left: 0;
+              top: 0;
+              display: block;
+              width: 1058px;
+              max-width: none;
+              height: auto;
+              transform: translate(-479px, -361px);
+            }
+
+            @media (max-width: 380px) {
+              body.invitation-page .dress-code-title {
+                font-size: 3rem;
+              }
+
+              body.invitation-page .dress-code-options {
+                gap: 12px;
+                font-size: 1.16rem;
+              }
+            }
+          </style>
+          <p class="dress-code-title">Dress code</p>
+          <p class="dress-code-formal">Formal</p>
+          <div class="dress-code-options">
+            <span>Ellas: Vestido</span>
+            <span>Ellos: Terno</span>
+          </div>
+          <div class="dress-code-icon-crop" aria-hidden="true">
+            <img src="assets/fotos invitacion 1/dresscode.jpeg" alt="">
+          </div>
+        </div>
+      </div>
 
       <div class="back-wrap hero-span-2">
         <a href="index.html" class="back-button" id="back-to-invitation">Volver al sobre</a>
